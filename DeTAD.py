@@ -247,7 +247,7 @@ def run(A, lamb, tau, phi, psi, max_iter, tol):
     return tad
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-in", dest="input", type=str, default="over_h_gap.txt", help="destination of the data")
+    parser.add_argument("-in", dest="input", type=str, default="simu_data_over_h_gap.txt", help="destination of the data")
     parser.add_argument("-lambda", dest="lamb", type=float, default=0.001057951873872655)
     parser.add_argument("-tau", dest="tau", type=float, default=1.1533782092998626)
     parser.add_argument("-phi", dest="phi",type=float, default=2.06713065615515)
@@ -257,8 +257,7 @@ def main():
     parser.add_argument("-out", dest="out", type=str, default="result.txt", help="output of the results")
     args = parser.parse_args()
     TADs = run(np.loadtxt(args.input), args.lamb, args.tau, args.phi, args.psi, args.max_iter, args.tol)
-    print(TADs)
-    #np.savetxt(args.out, TADs, fmt='%i', delimiter='\t')
+    np.savetxt(args.out, TADs, fmt='%i', delimiter='\t')
 if __name__ == "__main__":
     main()
 
